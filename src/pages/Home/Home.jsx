@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useFetchData from "./../../hooks/useFetchData";
 import Spinner from "./../../components/Spinner/Spinner";
+import NewsCard from "../../components/NewsCard/NewsCard";
 
 const Home = () => {
   const [allNews, setAllNews] = useState([]);
@@ -24,7 +25,11 @@ const Home = () => {
       {loading ? (
         <Spinner className="text-center text-primary mt-10" />
       ) : (
-        <div>{allNews.length}</div>
+        <div>
+          {allNews?.map((news) => (
+            <NewsCard key={news.id} news={news} />
+          ))}
+        </div>
       )}
     </section>
   );
