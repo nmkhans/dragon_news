@@ -11,6 +11,11 @@ function App() {
         <section className="grid grid-cols-5 gap-5">
           <LeftSidebar />
           <main className="col-span-3">
+            <div className="mb-5">
+              <h3 className="text-secondary font-semibold text-lg">
+                Dragon News Home
+              </h3>
+            </div>
             <Outlet />
           </main>
           <aside className="col-span-1">Right sidebar</aside>

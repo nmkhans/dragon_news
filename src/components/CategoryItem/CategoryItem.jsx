@@ -1,13 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const CategoryItem = ({
   selected,
   category,
   setSelectedCategory,
 }) => {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = () => {
+    setSelectedCategory(category.id);
+    navigate(`/category-news/${category.id}`);
+  };
+
   return (
     <div
-      onClick={() => setSelectedCategory(category.id)}
+      onClick={handleCategoryClick}
       className={`${
         selected
           ? "bg-accent font-semibold text-secondary"

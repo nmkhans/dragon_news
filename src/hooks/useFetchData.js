@@ -7,8 +7,15 @@ const useFetchData = () => {
     return data;
   };
 
+  const getNews = async () => {
+    const res = await fetch("/news.json");
+    const data = await res.json();
+    return data;
+  };
+
   return {
     getCategories,
+    getNews,
   };
 };
 
