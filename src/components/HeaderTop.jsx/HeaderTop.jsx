@@ -1,6 +1,7 @@
 import React from "react";
 import HeaderLogo from "../../assets/logo.png";
 import { Link } from "react-router";
+import { format } from "date-fns";
 
 const HeaderTop = () => {
   return (
@@ -21,8 +22,10 @@ const HeaderTop = () => {
       </div>
       <div className="mt-3 text-center">
         <p className="text-[#706F6F] font-medium">
-          <span className="text-[#403F3F]">Sunday</span>, November 27,
-          2025
+          <span className="text-[#403F3F]">
+            {format(new Date(), "EEEE, ")}
+          </span>
+          {format(new Date(), "MMMM dd, yyyy")}
         </p>
       </div>
     </div>
