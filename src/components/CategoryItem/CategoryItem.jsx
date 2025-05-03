@@ -10,7 +10,9 @@ const CategoryItem = ({
 
   const handleCategoryClick = () => {
     setSelectedCategory(category.id);
-    navigate(`/category-news/${category.id}`);
+    navigate(
+      category.id === 0 ? "/" : `/category-news/${category.id}`
+    );
   };
 
   return (

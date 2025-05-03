@@ -3,12 +3,16 @@ import React, { useEffect } from "react";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import useFetchData from "./../../hooks/useFetchData";
 import { useState } from "react";
-import Spinner from './../Spinner/Spinner';
+import Spinner from "./../Spinner/Spinner";
+import { useParams } from "react-router";
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(0);
+  const { id } = useParams();
+  const [selectedCategory, setSelectedCategory] = useState(
+    parseInt(id) || 0
+  );
   const { getCategories } = useFetchData();
 
   useEffect(() => {
