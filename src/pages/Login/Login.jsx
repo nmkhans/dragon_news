@@ -1,11 +1,13 @@
 import React from "react";
 import HeaderNavbar from "../../components/HeaderNavbar/HeaderNavbar";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useAuthContext } from "../../context/Auth/AuthContext";
 import Spinner from "../../components/Spinner/Spinner";
 
 const Login = () => {
   const { loading, loginUser } = useAuthContext();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +20,8 @@ const Login = () => {
     };
 
     loginUser(data);
+
+    navigate(location.state || "/");
   };
 
   return (

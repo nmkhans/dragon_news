@@ -13,11 +13,12 @@ import { toast } from "react-toastify";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
     });
 
     return () => unSubscribe();
@@ -25,7 +26,6 @@ const AuthProvider = ({ children }) => {
 
   async function createUser(data) {
     try {
-      setLoading(true);
       await createUserWithEmailAndPassword(
         auth,
         data.email,
@@ -47,8 +47,6 @@ const AuthProvider = ({ children }) => {
 
   async function loginUser(data) {
     try {
-      setLoading(true);
-
       await signInWithEmailAndPassword(
         auth,
         data.email,

@@ -3,8 +3,10 @@ import { Bookmark } from "lucide-react";
 import { Share2 } from "lucide-react";
 import { Star } from "lucide-react";
 import { Eye } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const NewsCard = ({ news }) => {
+  const navigate = useNavigate();
 
   return (
     <div className="mb-5">
@@ -50,7 +52,10 @@ const NewsCard = ({ news }) => {
           <p className="text-[#706F6F]">
             {news.details.slice(0, 300)}...
           </p>
-          <button className="text-primary font-semibold mt-2">
+          <button
+            onClick={() => navigate(`/news-detail/${news.id}`)}
+            className="text-primary font-semibold mt-2 cursor-pointer"
+          >
             Read More
           </button>
         </div>
