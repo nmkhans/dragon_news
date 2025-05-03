@@ -63,8 +63,8 @@ const NewsCard = ({ news }) => {
         <div className="flex items-center justify-between mt-5">
           <div className="flex items-center gap-x-3 text-[#706F6F]">
             <div className="flex items-center gap-1">
-              {[...Array(news.rating.number)].map(() => (
-                <Star size={18} color="#FF8C47" />
+              {[...Array(news.rating.number)].map((_, i) => (
+                <Star key={i} size={18} color="#FF8C47" />
               ))}
             </div>
             <span>{news.rating.number}</span>

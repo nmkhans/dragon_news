@@ -26,6 +26,7 @@ const AuthProvider = ({ children }) => {
 
   async function createUser(data) {
     try {
+      setLoading(true);
       await createUserWithEmailAndPassword(
         auth,
         data.email,
@@ -47,6 +48,7 @@ const AuthProvider = ({ children }) => {
 
   async function loginUser(data) {
     try {
+      setLoading(true);
       await signInWithEmailAndPassword(
         auth,
         data.email,
