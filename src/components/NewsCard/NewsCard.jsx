@@ -5,7 +5,6 @@ import { Star } from "lucide-react";
 import { Eye } from "lucide-react";
 
 const NewsCard = ({ news }) => {
-  console.log(news);
 
   return (
     <div className="mb-5">

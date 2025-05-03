@@ -26,26 +26,19 @@ const CategoryList = () => {
   }, []);
 
   return (
-    <div>
-      <div>
-        <h3 className="text-secondary font-semibold text-lg">
-          All Caterogy
-        </h3>
-      </div>
-      <div className="mt-5">
-        {loading ? (
-          <Spinner className="text-center text-primary" />
-        ) : (
-          categories?.map((category) => (
-            <CategoryItem
-              key={category.id}
-              category={category}
-              setSelectedCategory={setSelectedCategory}
-              selected={category.id === selectedCategory}
-            />
-          ))
-        )}
-      </div>
+    <div className="mt-5">
+      {loading ? (
+        <Spinner className="text-center text-primary" />
+      ) : (
+        categories?.map((category) => (
+          <CategoryItem
+            key={category.id}
+            category={category}
+            setSelectedCategory={setSelectedCategory}
+            selected={category.id === selectedCategory}
+          />
+        ))
+      )}
     </div>
   );
 };

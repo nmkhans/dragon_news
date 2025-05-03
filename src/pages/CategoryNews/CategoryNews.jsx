@@ -16,11 +16,20 @@ const CategoryNews = () => {
     const loadAllNews = async () => {
       const data = await getNews();
 
-      const filteredData = data.filter(
-        (news) => news.category_id === parseInt(id)
-      );
+      if (+id === 1) {
+        const filteredData = data.filter(
+          (news) => news.others.is_today_pick === true
+        );
 
-      setAllNews(filteredData);
+        setAllNews(filteredData);
+      } else {
+        const filteredData = data.filter(
+          (news) => news.category_id === parseInt(id)
+        );
+
+        setAllNews(filteredData);
+      }
+
       setLoading(false);
     };
     loadAllNews();
