@@ -5,6 +5,7 @@ import LeftSidebar from "./components/LeftSidebar/LeftSidebar";
 import RightSidebar from "./components/RightSidebar/RightSidebar";
 
 function App() {
+  
   return (
     <>
       <Header />

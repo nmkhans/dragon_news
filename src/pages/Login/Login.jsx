@@ -1,12 +1,29 @@
 import React from "react";
 import HeaderNavbar from "../../components/HeaderNavbar/HeaderNavbar";
 import { Link } from "react-router";
+import { useAuthContext } from "../../context/Auth/AuthContext";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Login = () => {
+  const { loading, loginUser } = useAuthContext();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const data = {
+      email,
+      password,
+    };
+
+    loginUser(data);
+  };
+
   return (
     <section className="bg-[#F3F3F3]">
       <HeaderNavbar className="py-5" />
-      <div className="h-[calc(100vh-87px)] flex items-center jistify-center">
+      <div className="flex items-center justify-center py-20">
         <div className="bg-white w-1/2 mx-auto py-10 px-15 rounded-xl flex flex-col items-center">
           <div className="w-full">
             <h3 className="text-center text-xl font-semibold text-secondary">
@@ -15,7 +32,7 @@ const Login = () => {
             <div className="divider"></div>
           </div>
           <div className="w-full">
-            <form className="block">
+            <form onSubmit={handleSubmit} className="block">
               <div className="flex flex-col">
                 <label
                   htmlFor="email"
@@ -46,7 +63,7 @@ const Login = () => {
               </div>
               <div className="flex flex-col mt-5">
                 <button className="btn btn-secondary w-full text-white">
-                  Login
+                  {loading ? <Spinner /> : "Login"}
                 </button>
               </div>
               <div className="flex flex-col mt-5">

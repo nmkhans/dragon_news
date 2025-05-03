@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router";
 import Avater from "../Avater/Avater";
+import { useAuthContext } from "../../context/Auth/AuthContext";
+import Spinner from "./../Spinner/Spinner";
 
 const HeaderNavbar = ({ className }) => {
+  const { user, loading, logOut } = useAuthContext();
+
   return (
     <nav className={className}>
       <div className="flex items-center">
@@ -18,12 +22,23 @@ const HeaderNavbar = ({ className }) => {
           </li>
         </ul>
         <div className="flex items-center gap-x-5 w-[20%]">
-          <Avater width={12} />
-          <Link to="/login">
-            <button className="inline-block btn btn-secondary text-white w-36 text-md">
-              Login
+          <Avater width={12} src={user?.photoURL} />
+          {loading ? (
+            <Spinner />
+          ) : user ? (
+            <button
+              onClick={logOut}
+              className="inline-block btn btn-secondary text-white w-36 text-md"
+            >
+              Logout
             </button>
-          </Link>
+          ) : (
+            <Link to="/login">
+              <button className="inline-block btn btn-secondary text-white w-36 text-md">
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>
